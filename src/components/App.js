@@ -1,7 +1,7 @@
 import { PieChartOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
-import Counter from "./Counter";
+import { Counter } from "./Counter";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
