@@ -1,23 +1,50 @@
-import { Button, Col, Row, Typography } from "antd";
-import React from "react";
+import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Col, Row, Card } from "antd";
+import { connect } from "react-redux";
+import { actionTypes } from "../redux";
 
-export const Counter = () => {
+const Counter = ({ counter, increment, decrement }) => {
   return (
     <>
-      <Row>
-        <Typography.Title>Counter</Typography.Title>
-      </Row>
-      <Row>
-        {/* <Col md={9} />
-        <Col md={2}>
-          <Button size="large" icon={<MinusOutlined />} shape="circle" />
-        </Col>
-        <Col md={4}>45</Col>
-        <Col md={2}>
-          <Button size="large" icon={<PlusOutlined />} shape="circle" />
-        </Col>
-        <Col md={9} /> */}
-      </Row>
+      <Card title="Counter Redux:" bordered={true}>
+        <Row>
+          <Col md={9} />
+          <Col md={2}>
+            <Button
+              size="large"
+              icon={<MinusOutlined />}
+              shape="circle"
+              onClick={decrement}
+            />
+          </Col>
+          <Col md={4}>
+            <span style={{ fontSize: "2rem", fontWeight: "bold" }}>
+              {counter}
+            </span>
+          </Col>
+          <Col md={2}>
+            <Button
+              size="large"
+              icon={<PlusOutlined />}
+              shape="circle"
+              onClick={increment}
+            />
+          </Col>
+          <Col md={9} />
+        </Row>
+      </Card>
     </>
   );
 };
+
+const mapStateToProps = (state) => ({ counter: state.counter });
+const mapDispatchToProps = (dispatch) => ({
+  increment: () => {
+    dispatch({ type: actionTypes.INCREMENT });
+  },
+  decrement: () => {
+    dispatch({ type: actionTypes.DECREMENT });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
