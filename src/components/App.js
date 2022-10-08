@@ -1,6 +1,7 @@
 import { PieChartOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
+import { Counter } from "./Counter";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -49,10 +50,9 @@ const App = () => {
           <div
             style={{
               padding: 24,
-              minHeight: 360,
             }}
           >
-            Bill is a cat.
+            <Counter />
           </div>
         </Content>
         <Footer
