@@ -1,7 +1,8 @@
-import { PieChartOutlined } from "@ant-design/icons";
+import { PieChartOutlined, OrderedListOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
 import { Counter } from "./Counter";
+import { Users } from "./Users";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -13,7 +14,10 @@ function getItem(label, key, icon, children) {
   };
 }
 
-const items = [getItem("Counter", "1", <PieChartOutlined />)];
+const items = [
+  getItem("Counter", "1", <PieChartOutlined />),
+  getItem("List", "2", <OrderedListOutlined />),
+];
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -53,6 +57,13 @@ const App = () => {
             }}
           >
             <Counter />
+          </div>
+          <div
+            style={{
+              padding: 24,
+            }}
+          >
+            <Users />
           </div>
         </Content>
         <Footer
